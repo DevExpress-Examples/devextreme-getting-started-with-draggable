@@ -1,38 +1,49 @@
 $(() => {
-    const notes = ["#note-1", "#note-2", "#note-3", "#note-4"];
     let z = 1;
 
   $("#note-1").dxDraggable({
     onDragStart: handleDragStart,
-    onDragMove: handleDragMove,
-    onDragEnd: handleDragEnd,
     boundary: ".board",
-    group: "1",
-  }).on("click", handleClick);
+    group: "cards",
+  }).on({
+    "click": handleClick,
+    "dxdragenter": handleDragEnter,
+    "dxdragleave": handleDragStop,
+    "dxdrop": handleDragStop,
+  });
 
   $("#note-2").dxDraggable({
     onDragStart: handleDragStart,
-    onDragMove: handleDragMove,
-    onDragEnd: handleDragEnd,
-    group: "1",
+    group: "cards",
     boundary: ".board",
-  }).on("click", handleClick);
+  }).on({
+    "click": handleClick,
+    "dxdragenter": handleDragEnter,
+    "dxdragleave": handleDragStop,
+    "dxdrop": handleDragStop,
+  });
 
   $("#note-3").dxDraggable({
     onDragStart: handleDragStart,
-    onDragMove: handleDragMove,
-    onDragEnd: handleDragEnd,
-    group: "1",
+    group: "cards",
     boundary: ".board",
-  }).on("click", handleClick);
+  }).on({
+    "click": handleClick,
+    "dxdragenter": handleDragEnter,
+    "dxdragleave": handleDragStop,
+    "dxdrop": handleDragStop,
+  });
 
   $("#note-4").dxDraggable({
     onDragStart: handleDragStart,
-    onDragMove: handleDragMove,
-    onDragEnd: handleDragEnd,
     boundary: ".board",
-    group: "1",
-  }).on("click", handleClick);
+    group: "cards",
+  }).on({
+    "click": handleClick,
+    "dxdragenter": handleDragEnter,
+    "dxdragleave": handleDragStop,
+    "dxdrop": handleDragStop,
+  });
 
   function changeZIndex(el) {
     z++;
@@ -47,15 +58,11 @@ $(() => {
     changeZIndex($(e.element[0]));
   }
 
-  function handleDragMove(e) {
-    if (e.toComponent !== e.component) {
-      e.toComponent.element().css("outline", "1px dashed red");
-    } else {
-      notes.forEach((el) => $(el).css('outline', ''));
-    }
+  function handleDragEnter(e) {
+    $(e.target).css("outline", "1px dashed red");
   }
 
-  function handleDragEnd() {
-    notes.forEach((el) => $(el).css('outline', ''));
+  function handleDragStop(e) {
+    $(e.target).css("outline", "");
   }
 });
