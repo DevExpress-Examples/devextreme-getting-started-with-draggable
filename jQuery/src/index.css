@@ -1,8 +1,12 @@
+:root {
+    color-scheme: light; /* Update this property when you switch between light/dark themes. */
+}
+
 .demo-container {
     display: flex;
     justify-content: center;
     padding: 40px;
-    height: 500px;
+    height: 100%;
 }
 
 .board {
