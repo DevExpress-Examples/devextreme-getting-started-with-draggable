@@ -1,5 +1,5 @@
 <template>
-  <div class="board dx-theme-fluent-typography">
+  <div class="board">
 
         <DxDraggable
           id="note-1"
