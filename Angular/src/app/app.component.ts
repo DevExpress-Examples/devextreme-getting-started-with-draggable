@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { DxDraggableTypes } from 'devextreme-angular/ui/draggable';
-import { on, trigger } from "devextreme/events";
+import { EventObject } from 'devextreme/common/core/events';
+import { on } from "devextreme/events";
 
 @Component({
   selector: 'app-root',
@@ -10,41 +11,39 @@ import { on, trigger } from "devextreme/events";
 export class AppComponent {
   title = 'Angular';
 
-  notes = ["#note-1", "#note-2", "#note-3", "#note-4"];
-
   z = 1;
 
-  changeZIndex(el: HTMLElement) {
+  changeZIndex(element: HTMLElement) {
     this.z++;
-    el.style.zIndex = this.z.toString();
+    element.style.zIndex = this.z.toString();
   }
 
-  handleClick(e: any) {
-    console.log(e);
-    //this.changeZIndex(e.currentTarget.element());
+  handleClick(e: EventObject) {
+    this.changeZIndex(e.currentTarget as HTMLElement);
   }
 
-  handleInit(e: any) {
-    on(e.element, 'dxclick', this.handleClick);
+  handleDragEnter(e: EventObject) {
+    const target: HTMLElement = e.target as HTMLElement;
 
-    on(document.body, 'dxclick', this.handleClick);
-    document.body.addEventListener('click', this.handleClick);
+    target.style.outline = "1px dashed red";
   }
 
+  handleDragStop(e: EventObject) {
+    const target: HTMLElement = e.target as HTMLElement;
+
+    target.style.outline = "";
+  }
+
+  handleInit(e: DxDraggableTypes.InitializedEvent) {
+    on(e.element!, 'click', this.handleClick.bind(this));
+
+    on(e.element!, 'dxdragenter', this.handleDragEnter);
+
+    on(e.element!, 'dxdragleave', this.handleDragStop);
+    on(e.element!, 'dxdrop', this.handleDragStop);
+  }
 
   handleDragStart(e: DxDraggableTypes.DragStartEvent) {
     this.changeZIndex(e.element);
- }
-
-  handleDragMove(e: DxDraggableTypes.DragMoveEvent) {
-    if (e.toComponent !== e.component) {
-      e.toComponent.element().style.outline = '1px dashed red';
-    } else {
-      this.notes.forEach((el) => { document.querySelector<HTMLElement>(el)?.style.setProperty('outline', ''); });
-    }
-  }
-
-  handleDragEnd(e: DxDraggableTypes.DragEndEvent) {
-    this.notes.forEach((el) => { document.querySelector<HTMLElement>(el)?.style.setProperty('outline', ''); });
   }
 }

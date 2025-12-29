@@ -1,13 +1,63 @@
-<dx-draggable
-  id="note-1"
-  class="card"
-  boundary=".board"
-  (onInitialized)="handleInit($event)"
-  (onDragStart)="handleDragStart($event)"
->
-  <div class="color-indicator blue"></div>
-  <div class="text-container">
-    <div class="body-text-box">Install New Router in Dev Room</div>
-    <div class="detail-text-box">Amelia Harper</div>
-  </div>
-</dx-draggable>
+<div class="board">
+
+  <dx-draggable
+    id="note-1"
+    group="cards"
+    class="card"
+    boundary=".board"
+    (onInitialized)="handleInit($event)"
+    (onDragStart)="handleDragStart($event)"
+  >
+    <div class="color-indicator blue"></div>
+    <div class="text-container">
+      <div class="body-text-box">Install New Router in Dev Room</div>
+      <div class="detail-text-box">Amelia Harper</div>
+    </div>
+  </dx-draggable>
+
+  <dx-draggable
+    id="note-2"
+    group="cards"
+    class="card"
+    boundary=".board"
+    (onInitialized)="handleInit($event)"
+    (onDragStart)="handleDragStart($event)"
+  >
+    <div class="color-indicator blue"></div>
+    <div class="text-container">
+      <div class="body-text-box">Install New Router in Dev Room</div>
+      <div class="detail-text-box">Amelia Harper</div>
+    </div>
+  </dx-draggable>
+
+  <dx-draggable
+    id="note-3"
+    group="cards"
+    class="card"
+    boundary=".board"
+    (onInitialized)="handleInit($event)"
+    (onDragStart)="handleDragStart($event)"
+  >
+    <div class="color-indicator blue"></div>
+    <div class="text-container">
+      <div class="body-text-box">Install New Router in Dev Room</div>
+      <div class="detail-text-box">Amelia Harper</div>
+    </div>
+  </dx-draggable>
+
+  <dx-draggable
+    id="note-4"
+    group="cards"
+    class="card"
+    boundary=".board"
+    (onInitialized)="handleInit($event)"
+    (onDragStart)="handleDragStart($event)"
+  >
+    <div class="color-indicator blue"></div>
+    <div class="text-container">
+      <div class="body-text-box">Install New Router in Dev Room</div>
+      <div class="detail-text-box">Amelia Harper</div>
+    </div>
+  </dx-draggable>
+
+</div>
