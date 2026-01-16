@@ -69,7 +69,7 @@ function App(): JSX.Element {
         >
           <div className="color-indicator green"></div>
           <div className="text-container">
-            <div className="body-text-box">Launch New Website</div>
+            <div className="body-text-box">👨‍💻 Launch New Website</div>
             <div className="detail-text-box">Brett Wade</div>
           </div>
         </Draggable>
@@ -99,9 +99,7 @@ function App(): JSX.Element {
         >
           <div className="color-indicator yellow"></div>
           <div className="text-container">
-            <div className="body-text-box">
-              Approve Personal Computer Upgrade Plan
-            </div>
+            <div className="body-text-box">🖥️ Approve Personal Computer Upgrade Plan</div>
             <div className="detail-text-box">Bart Arnaz</div>
           </div>
         </Draggable>
