@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { DxDraggableTypes } from 'devextreme-angular/ui/draggable';
+import { type DxDraggableTypes } from 'devextreme-angular/ui/draggable';
 import { EventObject } from 'devextreme/common/core/events';
 import { on } from "devextreme/events";
 
