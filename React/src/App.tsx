@@ -6,7 +6,7 @@ import { on } from 'devextreme/common/core/events';
 import { type EventObject } from 'devextreme/common/core/events';
 
 function App(): JSX.Element {
-  const [z, setZ] = useState(1);
+  const [, setZ] = useState(1);
 
   const changeZIndex = useCallback((element: HTMLElement) => {
     setZ((prevValue) => {
@@ -22,20 +22,20 @@ function App(): JSX.Element {
 
   const handleDragEnter = useCallback((e: EventObject) => {
     const target: HTMLElement = e.target as HTMLElement;
-    target.style.outline = "1px dashed red";
+    target.style.outline = '1px dashed red';
   }, []);
 
   const handleDragStop = useCallback((e: EventObject) => {
     const target: HTMLElement = e.target as HTMLElement;
-    target.style.outline = "";
+    target.style.outline = '';
   }, []);
 
-  function handleInit(e: DraggableTypes.InitializedEvent) {
+  const handleInit = useCallback((e: DraggableTypes.InitializedEvent) => {
     on(e.element!, 'click', handleClick);
     on(e.element!, 'dxdragenter', handleDragEnter);
     on(e.element!, 'dxdragleave', handleDragStop);
     on(e.element!, 'dxdrop', handleDragStop);
-  }
+  }, []);
 
   const handleDragStart = useCallback((e: DraggableTypes.DragStartEvent) => {
     changeZIndex(e.element);
@@ -43,8 +43,8 @@ function App(): JSX.Element {
 
   return (
     <div className="demo-container dx-theme-fluent-typography">
+      <div className="boundary-text">Dragging Boundary</div>
       <div className="board">
-
         <Draggable
           id="note-1"
           group="cards"
@@ -100,12 +100,14 @@ function App(): JSX.Element {
         >
           <div className="color-indicator yellow"></div>
           <div className="text-container">
-            <div className="body-text-box">Approve Personal Computer Upgrade Plan</div>
+            <div className="body-text-box">
+              Approve Personal Computer Upgrade Plan
+            </div>
             <div className="detail-text-box">Bart Arnaz</div>
           </div>
         </Draggable>
-
       </div>
+      <div className="boundary-text">Dragging Boundary</div>
     </div>
   );
 }
