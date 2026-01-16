@@ -73,8 +73,8 @@ import { type EventObject } from "devextreme/common/core/events";
 let z = 1;
 
 function changeZIndex(element: HTMLElement) {
-  z++;
   element.style.zIndex = z.toString();
+  z++;
 }
 
 function handleClick(e: EventObject) {
@@ -84,13 +84,13 @@ function handleClick(e: EventObject) {
 function handleDragEnter(e: EventObject) {
   const target: HTMLElement = e.target as HTMLElement;
 
-  target.style.outline = "1px dashed red";
+  target.classList.add('overlapped');
 }
 
 function handleDragStop(e: EventObject) {
   const target: HTMLElement = e.target as HTMLElement;
 
-  target.style.outline = "";
+  target.classList.remove('overlapped');
 }
 
 function handleInit(e: DxDraggableTypes.InitializedEvent) {
