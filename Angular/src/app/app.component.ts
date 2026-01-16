@@ -14,8 +14,8 @@ export class AppComponent {
   z = 1;
 
   changeZIndex(element: HTMLElement) {
-    this.z++;
     element.style.zIndex = this.z.toString();
+    this.z++;
   }
 
   handleClick(e: EventObject) {
@@ -25,13 +25,13 @@ export class AppComponent {
   handleDragEnter(e: EventObject) {
     const target: HTMLElement = e.target as HTMLElement;
 
-    target.style.outline = "1px dashed red";
+    target.classList.add('overlapped');
   }
 
   handleDragStop(e: EventObject) {
     const target: HTMLElement = e.target as HTMLElement;
 
-    target.style.outline = "";
+    target.classList.remove('overlapped');
   }
 
   handleInit(e: DxDraggableTypes.InitializedEvent) {
