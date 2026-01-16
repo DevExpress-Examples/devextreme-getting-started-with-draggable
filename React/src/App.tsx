@@ -10,9 +10,8 @@ function App(): JSX.Element {
 
   const changeZIndex = useCallback((element: HTMLElement) => {
     setZ((prevValue) => {
-      const nextValue = prevValue + 1;
-      element.style.zIndex = nextValue.toString();
-      return nextValue;
+      element.style.zIndex = prevValue.toString();
+      return prevValue + 1;
     });
   }, []);
 
@@ -22,12 +21,12 @@ function App(): JSX.Element {
 
   const handleDragEnter = useCallback((e: EventObject) => {
     const target: HTMLElement = e.target as HTMLElement;
-    target.style.outline = '1px dashed red';
+    target.classList.add('overlapped');
   }, []);
 
   const handleDragStop = useCallback((e: EventObject) => {
     const target: HTMLElement = e.target as HTMLElement;
-    target.style.outline = '';
+    target.classList.remove('overlapped');
   }, []);
 
   const handleInit = useCallback((e: DraggableTypes.InitializedEvent) => {
