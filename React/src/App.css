@@ -54,7 +54,6 @@
 }
 
 .card {
-  z-index: 0;
   max-width: 320px;
   min-width: 180px;
   width: 100%;
@@ -64,7 +63,6 @@
   background-color: light-dark(#fff, #292929);
   display: flex;
   box-shadow: 0 0 2px rgba(0 0 0 / 24%);
-  transition: box-shadow 0.1s ease-in-out;
 }
 
 .color-indicator {
@@ -74,19 +72,19 @@
   border-radius: 4px;
 }
 
-.color-indicator.blue {
+#note-1 .color-indicator {
   background-color: var(--dx-color-primary);
 }
 
-.color-indicator.green {
+#note-2 .color-indicator {
   background-color: var(--dx-color-success);
 }
 
-.color-indicator.red {
+#note-3 .color-indicator {
   background-color: var(--dx-color-danger);
 }
 
-.color-indicator.yellow {
+#note-4 .color-indicator {
   background-color: var(--dx-color-warning);
 }
 
@@ -108,7 +106,11 @@
   color: light-dark(#707070, #999);
 }
 
-.card.dx-draggable-dragging {
+.dx-draggable:has(.card) {
+  transition: box-shadow 0.1s ease-in-out;
+}
+
+.dx-draggable.dx-draggable-dragging:has(.card) {
   box-shadow: 0 4px 8px rgba(0 0 0 / 28%);
 }
 
