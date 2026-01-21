@@ -1,108 +1,57 @@
 <template>
   <div class="boundary-text">Dragging Boundary</div>
   <div class="board">
-    <DxDraggable
-      id="note-1"
-      group="cards"
-      class="card"
-      boundary=".board"
-      @initialized="handleInit"
-      @drag-start="handleDragStart"
-    >
-      <div class="color-indicator blue"></div>
-      <div class="text-container">
-        <div class="body-text-box">Install New Router in Dev Room</div>
-        <div class="detail-text-box">Amelia Harper</div>
-      </div>
-    </DxDraggable>
-
-    <DxDraggable
-      id="note-2"
-      group="cards"
-      class="card"
-      boundary=".board"
-      @initialized="handleInit"
-      @drag-start="handleDragStart"
-    >
-      <div class="color-indicator green"></div>
-      <div class="text-container">
-        <div class="body-text-box">👨‍💻 Launch New Website</div>
-        <div class="detail-text-box">Brett Wade</div>
-      </div>
-    </DxDraggable>
-
-    <DxDraggable
-      id="note-3"
-      group="cards"
-      class="card"
-      boundary=".board"
-      @initialized="handleInit"
-      @drag-start="handleDragStart"
-    >
-      <div class="color-indicator red"></div>
-      <div class="text-container">
-        <div class="body-text-box">Prepare 2026 Marketing Plan</div>
-        <div class="detail-text-box">Robert Reagan</div>
-      </div>
-    </DxDraggable>
-
-    <DxDraggable
-      id="note-4"
-      group="cards"
-      class="card"
-      boundary=".board"
-      @initialized="handleInit"
-      @drag-start="handleDragStart"
-    >
-      <div class="color-indicator yellow"></div>
-      <div class="text-container">
-        <div class="body-text-box">🖥️ Approve Personal Computer Upgrade Plan</div>
-        <div class="detail-text-box">Bart Arnaz</div>
-      </div>
-    </DxDraggable>
+    <template v-for="note in notes">
+      <Note
+        :id="note.id"
+        :task="note.task"
+        :assignee="note.assignee"
+        :is-overlapped="overlappedId === note.id"
+        v-model:z-index="zIndex"
+        :start-overlap="startOverlap"
+        :stop-overlap="stopOverlap"
+      />
+    </template>
   </div>
   <div class="boundary-text">Dragging Boundary</div>
 </template>
 
 <script setup lang="ts">
 import "devextreme/dist/css/dx.fluent.blue.light.css";
-import { DxDraggable, type DxDraggableTypes } from "devextreme-vue/draggable";
-import { on } from "devextreme/events";
-import { type EventObject } from "devextreme/common/core/events";
+import Note, { type NoteInfo } from "./Note.vue";
+import { ref } from "vue";
 
-let z = 1;
+const notes: NoteInfo[] = [
+  {
+    id: 'note-1',
+    task: 'Install New Router in Dev Room',
+    assignee: 'Amelia Harper',
+  },
+  {
+    id: 'note-2',
+    task: '👨‍💻 Launch New Website',
+    assignee: 'Brett Wade',
+  },
+  {
+    id: 'note-3',
+    task: 'Prepare 2026 Marketing Plan',
+    assignee: 'Robert Reagan',
+  },
+  {
+    id: 'note-4',
+    task: '🖥️ Approve Personal Computer Upgrade Plan',
+    assignee: 'Bart Arnaz',
+  },
+];
 
-function changeZIndex(element: HTMLElement) {
-  element.style.zIndex = z.toString();
-  z++;
+const overlappedId = ref<string | null>(null);
+const zIndex = ref<number>(0);
+
+function startOverlap(id: string) {
+  overlappedId.value = id;
 }
 
-function handleClick(e: EventObject) {
-  changeZIndex(e.currentTarget as HTMLElement);
-}
-
-function handleDragEnter(e: EventObject) {
-  const target: HTMLElement = e.target as HTMLElement;
-
-  target.classList.add('overlapped');
-}
-
-function handleDragStop(e: EventObject) {
-  const target: HTMLElement = e.target as HTMLElement;
-
-  target.classList.remove('overlapped');
-}
-
-function handleInit(e: DxDraggableTypes.InitializedEvent) {
-  on(e.element!, "click", handleClick);
-
-  on(e.element!, "dxdragenter", handleDragEnter);
-
-  on(e.element!, "dxdragleave", handleDragStop);
-  on(e.element!, "dxdrop", handleDragStop);
-}
-
-function handleDragStart(e: DxDraggableTypes.DragStartEvent) {
-  changeZIndex(e.element);
+function stopOverlap() {
+  overlappedId.value = null;
 }
 </script>

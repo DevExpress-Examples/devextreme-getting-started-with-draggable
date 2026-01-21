@@ -75,20 +75,20 @@
     border-radius: 4px;
 }
 
-.color-indicator.blue {
-    background-color: var(--dx-color-primary);
+#note-1 .color-indicator {
+  background-color: var(--dx-color-primary);
 }
 
-.color-indicator.green {
-    background-color: var(--dx-color-success);
+#note-2 .color-indicator {
+  background-color: var(--dx-color-success);
 }
 
-.color-indicator.red {
-    background-color: var(--dx-color-danger);
+#note-3 .color-indicator {
+  background-color: var(--dx-color-danger);
 }
 
-.color-indicator.yellow {
-    background-color: var(--dx-color-warning);
+#note-4 .color-indicator {
+  background-color: var(--dx-color-warning);
 }
 
 .text-container {
