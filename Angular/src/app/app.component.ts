@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
-import { type DxDraggableTypes } from 'devextreme-angular/ui/draggable';
-import { EventObject } from 'devextreme/common/core/events';
-import { on } from "devextreme/events";
+import { type NoteInfo } from 'src/note/note.component';
 
 @Component({
   selector: 'app-root',
@@ -11,39 +9,41 @@ import { on } from "devextreme/events";
 export class AppComponent {
   title = 'Angular';
 
-  z = 1;
+  notes: NoteInfo[] = [
+    {
+      id: 'note-1',
+      task: 'Install New Router in Dev Room',
+      assignee: 'Amelia Harper',
+    },
+    {
+      id: 'note-2',
+      task: '👨‍💻 Launch New Website',
+      assignee: 'Brett Wade',
+    },
+    {
+      id: 'note-3',
+      task: 'Prepare 2026 Marketing Plan',
+      assignee: 'Robert Reagan',
+    },
+    {
+      id: 'note-4',
+      task: '🖥️ Approve Personal Computer Upgrade Plan',
+      assignee: 'Bart Arnaz',
+    },
+  ];
 
-  changeZIndex(element: HTMLElement) {
-    element.style.zIndex = this.z.toString();
-    this.z++;
+  zIndex: number = 0;
+  overlappedId: string | null = null;
+
+  startOverlap: (id: string) => void = (id) => {
+    this.overlappedId = id;
   }
 
-  handleClick(e: EventObject) {
-    this.changeZIndex(e.currentTarget as HTMLElement);
+  stopOverlap: () => void = () => {
+    this.overlappedId = null;
   }
 
-  handleDragEnter(e: EventObject) {
-    const target: HTMLElement = e.target as HTMLElement;
-
-    target.classList.add('overlapped');
-  }
-
-  handleDragStop(e: EventObject) {
-    const target: HTMLElement = e.target as HTMLElement;
-
-    target.classList.remove('overlapped');
-  }
-
-  handleInit(e: DxDraggableTypes.InitializedEvent) {
-    on(e.element!, 'click', this.handleClick.bind(this));
-
-    on(e.element!, 'dxdragenter', this.handleDragEnter);
-
-    on(e.element!, 'dxdragleave', this.handleDragStop);
-    on(e.element!, 'dxdrop', this.handleDragStop);
-  }
-
-  handleDragStart(e: DxDraggableTypes.DragStartEvent) {
-    this.changeZIndex(e.element);
+  handleDragEnd: () => void = () => {
+    this.stopOverlap();
   }
 }
