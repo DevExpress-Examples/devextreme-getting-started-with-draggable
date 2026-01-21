@@ -109,8 +109,12 @@
     color: light-dark(#707070, #999);
 }
 
-.card.dx-draggable-dragging {
-    box-shadow: 0 4px 8px rgba(0 0 0 / 28%);
+.dx-draggable:has(.card) {
+  transition: box-shadow 0.1s ease-in-out;
+}
+
+.dx-draggable.dx-draggable-dragging:has(.card) {
+  box-shadow: 0 4px 8px rgba(0 0 0 / 28%);
 }
 
 .card.overlapped {
