@@ -40,10 +40,6 @@ function App(): JSX.Element {
     setOverlappedId(null);
   }, []);
 
-  const handleDragEnd = useCallback(() => {
-    setOverlappedId(null);
-  }, []);
-
   return (
     <div className="demo-container dx-theme-fluent-typography">
       <div className="boundary-text">Dragging Boundary</div>
@@ -56,7 +52,6 @@ function App(): JSX.Element {
             zIndex={zIndex}
             startOverlap={startOverlap}
             stopOverlap={stopOverlap}
-            onDragEnd={handleDragEnd}
           />
         ))}
       </div>

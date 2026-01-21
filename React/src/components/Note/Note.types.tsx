@@ -10,6 +10,5 @@ export interface NoteProps extends NoteInfo {
   isOverlapped: boolean;
   zIndex: React.MutableRefObject<number>;
   startOverlap(id: string): void;
-  stopOverlap(id: string): void;
-  onDragEnd(): void;
+  stopOverlap(): void;
 }

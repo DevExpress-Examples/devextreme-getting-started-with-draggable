@@ -14,7 +14,6 @@ function Note({
   zIndex,
   startOverlap,
   stopOverlap,
-  onDragEnd,
 }: NoteProps) {
   const overlappedComponentId = useRef<string | null>(null);
   const [currentZIndex, setCurrentZIndex] = useState(0);
@@ -37,7 +36,7 @@ function Note({
       startOverlap(toComponentId);
       overlappedComponentId.current = toComponentId;
     } else {
-      stopOverlap(overlappedComponentId.current!);
+      stopOverlap();
       overlappedComponentId.current = null;
     }
   }, []);
@@ -45,6 +44,10 @@ function Note({
   const onClick = useCallback(() => {
     updateZIndex();
   }, [updateZIndex]);
+
+  const handleDragEnd = useCallback(() => {
+    stopOverlap();
+  }, []);
 
   return (
     <Draggable
@@ -54,7 +57,7 @@ function Note({
       style={style}
       onDragStart={handleDragStart}
       onDragMove={handleDragMove}
-      onDragEnd={onDragEnd}
+      onDragEnd={handleDragEnd}
     >
       <div
         className={`card ${isOverlapped ? 'overlapped' : ''}`}
