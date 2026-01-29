@@ -8,7 +8,7 @@
         @drag-move="handleDragMove"
         @drag-end="handleDragEnd"
     >
-        <div :class="`card ${isOverlapped ? 'overlapped' : ''}`" @click="handleClick">
+        <div :class="`note ${isOverlapped ? 'overlapped' : ''}`" @click="handleClick">
             <div class="color-indicator"></div>
             <div class="text-container">
                 <div class="body-text-box">{{ task }}</div>
@@ -40,7 +40,7 @@ interface NoteProps extends NoteInfo {
 
 const {
     id,
-    group = 'cards',
+    group = 'notes',
     boundary = '.board',
     task,
     assignee,
