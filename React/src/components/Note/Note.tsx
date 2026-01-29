@@ -6,7 +6,7 @@ import { type NoteProps } from './Note.types';
 
 function Note({
   id,
-  group = 'cards',
+  group = 'notes',
   boundary = '.board',
   task,
   assignee,
@@ -60,7 +60,7 @@ function Note({
       onDragEnd={handleDragEnd}
     >
       <div
-        className={`card ${isOverlapped ? 'overlapped' : ''}`}
+        className={`note ${isOverlapped ? 'overlapped' : ''}`}
         onClick={onClick}
       >
         <div className="color-indicator"></div>
