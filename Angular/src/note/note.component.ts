@@ -14,7 +14,7 @@ export interface NoteInfo {
 })
 export class NoteComponent {
   id = input<string>();
-  group = input<string>('cards');
+  group = input<string>('notes');
   boundary = input<string>('.board')
   task = input<string>();
   assignee = input<string>();
