@@ -7,7 +7,7 @@
 
 This repository stores code for the following DevExpress tutorial: [Getting Started with DevExtreme Draggable](https://js.devexpress.com/Documentation/Guide/UI_Components/Draggable/Getting_Started_with_Draggable/). The project creates a Draggable and configures the component's core settings.
 
-![Getting Started with DevExtreme Draggable](images/draggable.png)
+![Screenshot of Getting Started with DevExtreme Draggable](images/draggable.png)
 
 ## Files to Review
 
