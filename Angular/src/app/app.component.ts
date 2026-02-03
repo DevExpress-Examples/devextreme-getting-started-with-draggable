@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ClickEvent } from 'devextreme/ui/button';
+import { type NoteInfo } from 'src/note/note.component';
 
 @Component({
   selector: 'app-root',
@@ -9,12 +9,41 @@ import { ClickEvent } from 'devextreme/ui/button';
 export class AppComponent {
   title = 'Angular';
 
-  counter = 0;
+  notes: NoteInfo[] = [
+    {
+      id: 'note-1',
+      task: 'Install New Router in Dev Room',
+      assignee: 'Amelia Harper',
+    },
+    {
+      id: 'note-2',
+      task: '👨‍💻 Launch New Website',
+      assignee: 'Brett Wade',
+    },
+    {
+      id: 'note-3',
+      task: 'Prepare 2026 Marketing Plan',
+      assignee: 'Robert Reagan',
+    },
+    {
+      id: 'note-4',
+      task: '🖥️ Approve Personal Computer Upgrade Plan',
+      assignee: 'Bart Arnaz',
+    },
+  ];
 
-  buttonText = 'Click count: 0';
+  zIndex: number = 0;
+  overlappedId: string | null = null;
 
-  onClick(_e: ClickEvent): void {
-    this.counter++;
-    this.buttonText = `Click count: ${this.counter}`;
+  startOverlap: (id: string) => void = (id) => {
+    this.overlappedId = id;
+  }
+
+  stopOverlap: () => void = () => {
+    this.overlappedId = null;
+  }
+
+  handleDragEnd: () => void = () => {
+    this.stopOverlap();
   }
 }

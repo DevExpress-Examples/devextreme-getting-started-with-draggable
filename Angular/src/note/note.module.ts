@@ -1,21 +1,20 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { DxDraggableModule } from 'devextreme-angular/ui/draggable';
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { NoteModule } from 'src/note/note.module';
+import { NoteComponent } from './note.component';
 
 @NgModule({
   declarations: [
-    AppComponent,
+    NoteComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     DxDraggableModule,
-    NoteModule,
+  ],
+  exports: [
+    NoteComponent,
   ],
   providers: [],
-  bootstrap: [AppComponent],
+  bootstrap: [NoteComponent],
 })
-export class AppModule { }
+export class NoteModule { }

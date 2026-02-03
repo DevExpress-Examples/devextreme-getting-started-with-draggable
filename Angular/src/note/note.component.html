@@ -1,0 +1,19 @@
+<div (click)="handleClick()">
+  <dx-draggable
+    [id]="id()"
+    [group]="group()"
+    [boundary]="boundary()"
+    class="note"
+    [style.z-index]="currentZIndex"
+    [class.overlapped]="isOverlapped()"
+    (onDragMove)="handleDragMove($event)"
+    (onDragEnd)="handleDragEnd()"
+    (onDragStart)="handleDragStart()"
+  >
+    <div class="color-indicator"></div>
+    <div class="text-container">
+      <div class="body-text-box">{{ task() }}</div>
+      <div class="detail-text-box">{{ assignee() }}</div>
+    </div>
+  </dx-draggable>
+</div>

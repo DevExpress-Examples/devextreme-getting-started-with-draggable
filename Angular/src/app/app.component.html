@@ -1,3 +1,17 @@
-<div class="default-style">
-  <dx-button [text]="buttonText" (onClick)="onClick($event)"></dx-button>
+<div class="demo-container dx-theme-fluent-typography">
+  <div class="boundary-text">Dragging Boundary</div>
+  <div class="board">
+    @for (note of notes; track note) {
+    <note
+      [id]="note.id"
+      [task]="note.task"
+      [assignee]="note.assignee"
+      [isOverlapped]="overlappedId === note.id"
+      [(zIndex)]="zIndex"
+      [startOverlap]="startOverlap"
+      [stopOverlap]="stopOverlap"
+    ></note>
+    }
+  </div>
+  <div class="boundary-text">Dragging Boundary</div>
 </div>
