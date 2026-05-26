@@ -1,7 +1,10 @@
 <template>
   <div class="boundary-text">Dragging Boundary</div>
   <div class="board">
-    <template v-for="note in notes">
+    <template
+      v-for="note in notes"
+      :key="note.id"
+    >
       <Note
         :id="note.id"
         :task="note.task"
@@ -17,9 +20,9 @@
 </template>
 
 <script setup lang="ts">
-import "devextreme/dist/css/dx.fluent.blue.light.css";
-import Note, { type NoteInfo } from "./Note.vue";
-import { ref } from "vue";
+import 'devextreme/dist/css/dx.fluent.blue.light.css';
+import Note, { type NoteInfo } from './Note.vue';
+import { ref } from 'vue';
 
 const notes: NoteInfo[] = [
   {
