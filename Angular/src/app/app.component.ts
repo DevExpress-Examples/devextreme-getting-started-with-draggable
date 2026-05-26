@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { type NoteInfo } from 'src/note/note.component';
+import { NoteComponent, type NoteInfo } from 'src/note/note.component';
 
 @Component({
   selector: 'app-root',
+  imports: [NoteComponent],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })

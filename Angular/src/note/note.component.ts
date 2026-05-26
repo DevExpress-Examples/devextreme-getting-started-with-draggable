@@ -1,5 +1,5 @@
 import { Component, input, model } from '@angular/core';
-import { type DxDraggableTypes } from 'devextreme-angular/ui/draggable';
+import { DxDraggableModule, type DxDraggableTypes } from 'devextreme-angular/ui/draggable';
 
 export interface NoteInfo {
   id: string;
@@ -9,6 +9,7 @@ export interface NoteInfo {
 
 @Component({
   selector: 'note',
+  imports: [DxDraggableModule],
   templateUrl: './note.component.html',
   styleUrls: ['../app/app.component.scss'],
 })
