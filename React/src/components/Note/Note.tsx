@@ -45,6 +45,10 @@ function Note({
     updateZIndex();
   }, [updateZIndex]);
 
+  const onKeyDown = useCallback(() => {
+    updateZIndex();
+  }, [updateZIndex]);
+
   const handleDragEnd = useCallback(() => {
     stopOverlap();
   }, []);
@@ -61,7 +65,10 @@ function Note({
     >
       <div
         className={`note ${isOverlapped ? 'overlapped' : ''}`}
+        role="button"
+        tabIndex={0}
         onClick={onClick}
+        onKeyDown={onKeyDown}
       >
         <div className="color-indicator"></div>
         <div className="text-container">
