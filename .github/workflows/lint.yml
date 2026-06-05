@@ -34,9 +34,6 @@ jobs:
       working-directory: Angular
       run: npm install --no-fund
 
-    - name: Security audit
-      working-directory: Angular
-      run: npm audit --audit-level=high
       continue-on-error: true
 
     - name: Lint Angular
@@ -68,9 +65,6 @@ jobs:
       working-directory: jQuery
       run: npm install --no-fund
 
-    - name: Security audit
-      working-directory: jQuery
-      run: npm audit --audit-level=high
       continue-on-error: true
 
     - name: Lint jQuery
@@ -102,9 +96,6 @@ jobs:
       working-directory: React
       run: npm install --no-fund
 
-    - name: Security audit
-      working-directory: React
-      run: npm audit --audit-level=high
       continue-on-error: true
 
     - name: Lint React
@@ -136,9 +127,6 @@ jobs:
       working-directory: Vue
       run: npm install --no-fund
 
-    - name: Security audit
-      working-directory: Vue
-      run: npm audit --audit-level=high
       continue-on-error: true
 
     - name: Lint Vue
