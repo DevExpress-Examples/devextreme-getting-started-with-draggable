@@ -94,6 +94,10 @@ jobs:
 
       continue-on-error: true
 
+    - name: Generate license file
+      working-directory: Vue
+      run: npm run prebuild
+
     - name: TSC Vue
       working-directory: Vue
       run: npm run type-check
