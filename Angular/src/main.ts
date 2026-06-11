@@ -5,5 +5,4 @@ import { AppComponent } from './app/app.component';
 bootstrapApplication(AppComponent, {
   providers: [provideZoneChangeDetection()],
 })
-  // eslint-disable-next-line no-console
   .catch((err) => console.error(err));
