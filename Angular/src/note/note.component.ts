@@ -1,4 +1,4 @@
-import { Component, input, model } from '@angular/core';
+import { Component, input, model, ChangeDetectionStrategy } from '@angular/core';
 import { DxDraggableModule, type DxDraggableTypes } from 'devextreme-angular/ui/draggable';
 
 export interface NoteInfo {
@@ -11,6 +11,7 @@ export interface NoteInfo {
   selector: 'note',
   imports: [DxDraggableModule],
   templateUrl: './note.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrls: ['../app/app.component.scss'],
 })
 export class NoteComponent {
